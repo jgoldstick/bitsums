@@ -1,0 +1,21 @@
+{% extends 'bitsum/templates/base.html' %}
+<h1>Programming Project: Bitsum</h1>
+{% block content %}
+<p>See previous results below<p>
+<p>Enter integers for A and B to compute the sum of the ones in the product of A * B in binary</p>
+<form action = ""  method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="Submit">
+</form>
+<table>
+    <tr>
+        <th>Time</th><th>Bitsum</th><th>A</th><th>B</th><th>Used</th>
+    </tr>
+{% for b in bitsums %}
+    <tr>
+        <td>{{ b.time }}</td><td>{{ b.bitsum }}</td><td>{{ b.A }}</td><td>{{ b.B }}</td><td>{{ b.used }}</td>
+    </tr>
+{% endfor %}
+</table>
+{% endblock %}
